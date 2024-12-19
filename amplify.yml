@@ -3,12 +3,14 @@ frontend:
   phases:
     preBuild:
       commands:
+        - ls -la  # This will help us debug by showing all files
+        - cat package-lock.json || echo "No package-lock.json found"
         - npm ci
     build:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: build
+    baseDirectory: dist
     files:
       - '**/*'
   cache:
